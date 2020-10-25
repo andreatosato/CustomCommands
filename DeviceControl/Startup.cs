@@ -65,9 +65,14 @@ namespace DeviceControl
 
             app.UseRouting();
 
+             app.UseAuthentication()
+                .UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints
+                    .MapControllers()
+                    .RequireAuthorization();
             });
         }
     }
